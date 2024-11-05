@@ -5,10 +5,26 @@ dotenv.config();
 import connectDB from './db/index.js';
 
 connectDB()
+.then( ()=>{
+ app.listen(process.env.PORT ||5000,()=>{
+  console.log(`server running at port:${process.env.PORT}`)
+ })
+
+})
+.catch((err)=>{
+  console.log("Mongodb Connection failed:",err);
+})
+
+
+
+
+
 
 
 /*
 // effies ka use kar rahe hai better aproach---------method 2 databse connection
+
+
 import mongoose from "mongoose";
 require('dotenv') .config();
 import { DB_NAME } from "./constants.js";
@@ -24,7 +40,7 @@ const app=express();
         
     })
     app.listen((process.env.PORT),()=>{
-        console.log(`App is listening on port ${process.env.PORT}`)
+        console.log(`App is listening on port: ${process.env.PORT}`)
     })
 
   } catch (error) {
