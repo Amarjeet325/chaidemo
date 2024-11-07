@@ -16,8 +16,15 @@ app.use(express.urlencoded({ extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
+//   router imports-----------
+import userRouter from "./routes/user.routes.js"
 
 
+  // router declaration
+
+  app.use("/api/v1/users",userRouter)
+
+ // http:localhost:4000/api/v1/users/register; aise browser par call hoga
 
 
 export { app }   // <--OR --> export default app
